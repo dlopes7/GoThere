@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GoThere</string>
+    
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_sign_up">Sign Up</string>
+    <string name="btn_login">Log in</string>
+    <string name="facebook_login">Login with Facebook</string>
+    <string name="authenticating">Authenticating&#8230;</string>
+    <string name="facebook_app_id">1711201872500363</string>
+
+    <string name="logo">Go There Logo</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+</resources>
