@@ -1,8 +1,10 @@
 package com.gothere.gothere.adapters;
 
 
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +28,24 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ActivityViewHolder
 
     public static class ActivityViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
+        CardView cvL;
         TextView personName;
         TextView personAge;
         ImageView personPhoto;
 
         ActivityViewHolder(View itemView) {
             super(itemView);
+
             cv = (CardView)itemView.findViewById(R.id.cv);
+            cv.setOnClickListener(new CardView.OnClickListener(){
+                @Override public void onClick(View v) {
+                    cvL = (CardView)v;
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        Log.i("David", "" + cvL);
+                    }
+                }
+            });
+
             personName = (TextView)itemView.findViewById(R.id.person_name);
             personAge = (TextView)itemView.findViewById(R.id.person_age);
             personPhoto = (ImageView)itemView.findViewById(R.id.person_photo);
