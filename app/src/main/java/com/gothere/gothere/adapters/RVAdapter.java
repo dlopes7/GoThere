@@ -12,16 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gothere.gothere.R;
-import com.gothere.gothere.business.BusinessActivity;
+import com.gothere.gothere.models.Item;
 
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ActivityViewHolder>{
 
-    List<BusinessActivity> activities;
+    List<Item> items;
 
-    public RVAdapter(List<BusinessActivity> activities){
-        this.activities = activities;
+    public RVAdapter(List<Item> items){
+        this.items = items;
     }
 
 
@@ -29,9 +29,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ActivityViewHolder
     public static class ActivityViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         CardView cvL;
-        TextView personName;
-        TextView personAge;
-        ImageView personPhoto;
+        TextView nomeItem;
+        TextView descricaoItem;
+        TextView fornecedor;
+        ImageView fotoItem;
 
         ActivityViewHolder(View itemView) {
             super(itemView);
@@ -46,15 +47,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ActivityViewHolder
                 }
             });
 
-            personName = (TextView)itemView.findViewById(R.id.person_name);
-            personAge = (TextView)itemView.findViewById(R.id.person_age);
-            personPhoto = (ImageView)itemView.findViewById(R.id.person_photo);
+            nomeItem = (TextView)itemView.findViewById(R.id.nome_item);
+            descricaoItem = (TextView)itemView.findViewById(R.id.descricao_item);
+            fotoItem = (ImageView)itemView.findViewById(R.id.foto_item);
+            fornecedor = (TextView)itemView.findViewById(R.id.fornecedor);
         }
     }
 
     @Override
     public int getItemCount() {
-        return activities.size();
+        return items.size();
     }
 
     @Override
@@ -65,10 +67,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ActivityViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ActivityViewHolder personViewHolder, int i) {
-        personViewHolder.personName.setText(activities.get(i).getName());
-        personViewHolder.personAge.setText(activities.get(i).getPlace());
-        personViewHolder.personPhoto.setImageResource(activities.get(i).getPhotoId());
+    public void onBindViewHolder(ActivityViewHolder itemsHolder, int i) {
+        itemsHolder.nomeItem.setText(items.get(i).getProduto());
+        itemsHolder.descricaoItem.setText("R$" + items.get(i).getValor_unitario() + " - " + items.get(i).getDescricao());
+        itemsHolder.fotoItem.setImageResource(R.drawable.casa);
+        //TODO Lógica do fornecedor
+        itemsHolder.fornecedor.setText("David");
     }
 
     @Override
