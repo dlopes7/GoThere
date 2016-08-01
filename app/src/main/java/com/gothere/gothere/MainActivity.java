@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
 
                         for (int i = 0; i < jsonItems.length(); i++) {
                             JSONObject itemJson = jsonItems.getJSONObject(i);
-                            int id = itemJson.getInt("id");
+                            int id = itemJson.getInt("_id");
                             String produto = itemJson.getString("produto");
                             String descricao = itemJson.getString("descricao");
                             Double valor_unitario = itemJson.getDouble("valor_unitario");
